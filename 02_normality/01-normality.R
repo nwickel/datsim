@@ -22,6 +22,7 @@ shapiro.test(ChickWeight$weight)
 ks.test(ChickWeight$weight, "pnorm",
         mean = mean(ChickWeight$weight),
         sd = sd(ChickWeight$weight))
+# --> mean and sd should *not* be estimated from the sample!
 
 # Additional tests from R package `nortest`
 
@@ -46,7 +47,7 @@ one_simulation <- function(n, xi, nrep = 1000) {
     y <- dgp(n = n, xi = xi)
     c(
       s = shapiro.test(y)$p.value,
-      k = ks.test(y, "pnorm", mean = mean(y), sd = sd(y))$p.value
+      k = ks.test(y, "pnorm", mean = 0, sd = 1)$p.value
     )
   })
   rowMeans(pval < .05)
