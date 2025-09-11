@@ -12,7 +12,7 @@
 <meta name="author" content />
 
 
-<title>Exercise: Data simulation with R</title>
+<title>Power simulation</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,50 +349,34 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Exercise: Data simulation with R</h1>
+<h1 class="title toc-ignore">Power simulation</h1>
 <h4 class="author"></h4>
 
 </div>
 
 
-<p>Simulate data for the following model for <span class="math inline">\(N = 20\)</span> subjects: <span class="math display">\[
-y_{ijk} = \mu + \alpha_{i} + \beta_{j} + \varepsilon_{ijk}
-\]</span> with <span class="math inline">\(i \in \{1,2\}\)</span>, <span class="math inline">\(j \in \{1,2\}\)</span>, <span class="math inline">\(k = 1 \dots 5\)</span>, and <span class="math inline">\(\varepsilon_{ijk} \sim
-N(0,\sigma^2_\varepsilon)\)</span></p>
-<p>Assume the following “true” cell means:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left"><span class="math inline">\(B_1\)</span></th>
-<th align="left"><span class="math inline">\(B_2\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(A_1\)</span></td>
-<td align="left">107</td>
-<td align="left">103</td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(A_2\)</span></td>
-<td align="left">97</td>
-<td align="left">93</td>
-</tr>
-</tbody>
-</table>
-<p>Tip: Calculate <span class="math inline">\(\mu\)</span> and the
-effects <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> first from the data and decide on
-the size of <span class="math inline">\(\sigma^2_\varepsilon\)</span></p>
-<p>When you have your simulated data, fit two ANOVA models to your data:
-the additive model given above and a model that additionally assumes
-that factor <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> interact:</p>
-<p><span class="math display">\[
-y_{ijk} = \mu + \alpha_{i} + \beta_{j} + (\alpha\times\beta)_{ij} +
-\varepsilon_{ijk}
-\]</span></p>
-<p>Calculate the type I error for testing the interaction using a for
-loop or the function <code>replicate()</code>.</p>
+<div id="decision-biases-from-two-hand-tapping" class="section level3 unnumbered">
+<h3 class="unnumbered">Decision biases from two-hand tapping</h3>
+<p>Adjust the power simulation from the slides so that it follows the
+same code structure that we have used for the previous examples and
+exercises.</p>
+<ul>
+<li>Write a function <code>dgp()</code> that simulates data from the
+specified logit model.
+<ul>
+<li>What arguments should this function take?</li>
+</ul></li>
+<li>Write a function <code>one_simulation()</code> that tests the null
+hypotheses <span class="math inline">\(H_0\)</span> <span class="math inline">\(\beta_3 = 0\)</span> for the interaction effect
+and returns if the test was significant or not (TRUE or FALSE).</li>
+<li>Finally, write a function <code>simulation_study()</code> that let’s
+you conduct a simulation study for different factor combinations that
+you are interested in.</li>
+<li>Visualize your results.</li>
+<li>How many subjects do you need to find the hypothesized effect of ROR
+= 4?</li>
+</ul>
+</div>
 
 
 

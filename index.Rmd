@@ -10,10 +10,10 @@ bibliography: lit.bib
 
 | Time         | Content                                                 | Exercises                                       |
 |-------------:|:--------------------------------------------------------|:------------------------------------------------|
-|  9:00--10:30 | [Introduction to data simulation](01_intro/01-intro.pdf), [Basics of data simulation in R](01_intro/02-datsim.html)| [Data simulation](01_intro/exercise.html)|
+|  9:00--10:30 | [Introduction to simulation studies](01_intro/01-intro.pdf), [Basics of data simulation in R](01_intro/02-datsim.html)| [Data simulation](01_intro/exercise.html)|
 | 10:45--12:30 | [Comparing methods for testing normality](02_normality/01-normality.html) | [Testing normality assumption](02_normality/exercise.html)                   |
 | 13:15--15:00 | [Summarizing results from a simulation study](03_conditional/01-summarize.pdf), [Simulation study for testing estimator properties](03_conditional/02-simstudy.html) | [Conditional testing of hypotheses](03_conditional/exercise.html)    |
-| 15:30--17:00 | TODO: Quality of test decisions  | TODO  |
+| 15:30--17:00 | [Simulation-based power analysis](04_powersim/01-powersim.pdf)  | [Power simulation for logit model](04_powersim/exercise.html) |
 
 
 # Abstract

@@ -60,11 +60,11 @@
 
 \setbeamertemplate{footline}{\vskip-2pt\hfill\insertframenumber$\;$\vskip2pt}
 
-\title{Introduction to data simulation}
+\title{Introduction to simulation studies}
 \author{Nora Wickelmaier\footnote{Parts of this slide set are a (modified)
 version of slides accompanying the book by \citet{Strobl2024}}}
 %\institute{Leibniz-Institut f\"ur Wissensmedien, T\"ubingen}
-\date{Last modified: 2025-09-08}
+\date{Last modified: 2025-09-11}
 
 \begin{document}
 
@@ -130,6 +130,24 @@ version of slides accompanying the book by \citet{Strobl2024}}}
     \item We want to simulate the type I error rate for fitting a model
       including the slope $\beta_1$ when data were generated from the Null model
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Type I error rate}
+\begin{itemize}
+  \item The type I error rate corresponds to how often a test obtains a
+    significant result for a given $\alpha$ level (e.\,g.~5\%), given that no
+    effect is truly present
+\vspace{0.4cm}
+\begin{equation*}
+\widehat{\text{$Type$-$I$-$Err$}}_s = \frac{\sum_{i = 1}^{niter} I(\mbox{\emph{p-value}}_{is} < \alpha | H_0)}{niter}
+\end{equation*}
+  \item For a test with a given $\alpha$ level, the empirical type I error rate
+    should be close to $\alpha$
+  \item A test is called conservative if the observed type I error rate is lower
+    than the given $\alpha$
+  \item A test is called liberal if the observed type I error rate exceeds the
+    given $\alpha$
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Demonstration}

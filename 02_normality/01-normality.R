@@ -1,7 +1,7 @@
 #' ---
 #' title: "Data simulation to compare methods for testing normality assumption"
 #' author: ""
-#' date: "Last modified: 2025-09-08"
+#' date: "Last modified: 2025-09-10"
 #' bibliography: ../lit.bib
 #' ---
 

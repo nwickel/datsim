@@ -33,14 +33,18 @@ for (folder in folders) {
 
     if (grepl("exercise", fname)) {
       code_download <- FALSE
+      toc           <- FALSE
+      toc_float     <- FALSE
     } else {
       code_download <- TRUE
+      toc           <- TRUE
+      toc_float     <- TRUE
     }
     subfolder <- gsub("(^0[0-9].*)\\/.*", "\\1", fname)
     rmarkdown::render(fname,
                       rmarkdown::html_document(code_download = code_download,
-                                               toc = TRUE,
-                                               toc_float = TRUE,
+                                               toc = toc,
+                                               toc_float = toc_float,
                                                number_sections = TRUE),
                       output_dir = paste("docs", subfolder, sep = "/"))
   }
