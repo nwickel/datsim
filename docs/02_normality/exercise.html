@@ -396,10 +396,13 @@ distribution.</li>
 <h3 class="unnumbered">Testing type I error rate</h3>
 <p>Since we might have gotten the impression that the test properties of
 the Kolmogorov-Smirnov test and the Shapiro test are not ideal, let’s
-check if they adhere to <span class="math inline">\(\alpha\)</span>.</p>
+check if they adhere to <span class="math inline">\(\alpha =
+0.05\)</span>.</p>
 <ul>
 <li>Adjust the functions so that you simulate normal data and compare
 the two tests for normality assumption.</li>
+<li>Adjust the one_simulation function so that it returns if the test
+for normality was significant (TRUE/FALSE).</li>
 <li>Let the mean for your data vary; should this influence the normality
 of the data?</li>
 </ul>
