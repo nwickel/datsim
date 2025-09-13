@@ -64,7 +64,7 @@
 \author{Nora Wickelmaier\footnote{Parts of this slide set are a (modified)
 version of slides accompanying the book by \citet{Strobl2024}}}
 %\institute{Leibniz-Institut f\"ur Wissensmedien, T\"ubingen}
-\date{Last modified: 2025-09-11}
+\date{Last modified: 2025-09-12}
 
 \begin{document}
 
@@ -117,7 +117,7 @@ version of slides accompanying the book by \citet{Strobl2024}}}
       concept of hypothesis testing after \citet{NeymanPearson33}
     \item We fit a simple regression line to predict stopping distance (in feet)
       of oldtimer cars with driving speed (in miles per hour)
-    \item We fit a Null model that only predicts the mean
+    \item We fit a null model that only predicts the mean distance
       \[
         y = \beta_0 + \varepsilon, ~~~\text{with } \varepsilon \sim N(0,
         \sigma^2_{\varepsilon})
@@ -128,7 +128,7 @@ version of slides accompanying the book by \citet{Strobl2024}}}
         \sim N(0, \sigma^2_{\varepsilon})
       \]
     \item We want to simulate the type I error rate for fitting a model
-      including the slope $\beta_1$ when data were generated from the Null model
+      including the slope $\beta_1$ when data were generated from the null model
   \end{itemize}
 \end{frame}
 
@@ -224,7 +224,7 @@ mean(pval < 0.05)
 \begin{lstlisting}
 npers <- 100
 s_err <- 5
-beta  <- c(1.5, 2.5),
+beta  <- c(1.5, 2.5)
 \end{lstlisting}
 \end{frame}
 
@@ -235,7 +235,7 @@ beta  <- c(1.5, 2.5),
     \item The simple linear regression model assumes $\varepsilon_p \sim N(0,
       \sigma_{\varepsilon}^2)$\\
     \item Random, normally distributed values can be generated in R using
-      \texttt{rnorm()}:
+      \texttt{rnorm()}
       \end{itemize}
 \begin{lstlisting}
 err <- rnorm(n = npers, mean = 0, sd = s_err)
@@ -243,7 +243,6 @@ err <- rnorm(n = npers, mean = 0, sd = s_err)
     \item Generating the $x$ and $y$ values
 \begin{lstlisting}
 x <- runif(n = npers, min = 0, max = 5)
-beta <- c(1.5, 2.5)
 y <- beta[1] + beta[2] * x + err
 \end{lstlisting}
     \item Saving as a data frame
@@ -296,12 +295,12 @@ dgp <- function(npers, beta, s_err){
       datasets are generated
   \end{itemize}
 \begin{columns}[T]
-\begin{column}{0.4\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
 \begin{lstlisting}
 dat <- dgp(npers = 100, 
-        beta = c(1.5, 2.5),
-        s_err = 5)
+           beta = c(1.5, 2.5),
+           s_err = 5)
 head(dat)
 
 #           x         y
@@ -314,12 +313,12 @@ head(dat)
 \end{lstlisting}
 \end{column}
 
-\begin{column}{0.4\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
 \begin{lstlisting}
 dat <- dgp(npers = 100, 
-        beta = c(1.5, 2.5),
-        s_err = 5)
+           beta = c(1.5, 2.5),
+           s_err = 5)
 head(dat)
 
 #          x         y

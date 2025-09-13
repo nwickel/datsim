@@ -1,7 +1,7 @@
 #' ---
 #' title: "Data simulation to compare methods for testing normality assumption"
 #' author: ""
-#' date: "Last modified: 2025-09-10"
+#' date: "Last modified: 2025-09-13"
 #' bibliography: ../lit.bib
 #' ---
 
@@ -42,33 +42,33 @@ dgp <- function(n, xi) {
   fGarch::rsnorm(n = n, mean = 0, sd = 1, xi = xi)
 }
 
-one_simulation <- function(n, xi, nrep = 1000) {
-  pval <- replicate(nrep, {
-    y <- dgp(n = n, xi = xi)
-    c(
-      s = shapiro.test(y)$p.value,
-      k = ks.test(y, "pnorm", mean = 0, sd = 1)$p.value
-    )
-  })
-  rowMeans(pval < .05)
+one_simulation <- function(n, xi) {
+  y <- dgp(n = n, xi = xi)
+  pval <- c(
+    s = shapiro.test(y)$p.value,
+    k = ks.test(y, "pnorm", mean = 0, sd = 1)$p.value
+  )
+  return(pval)
 }
 
-simulation_study <- function(niter, n, xi, nrep = 1000) {
+simulation_study <- function(niter, n, xi) {
   comb <- expand.grid(i = 1:niter, n = n, xi = xi)
-  p <- mapply(one_simulation, n = comb$n, xi = comb$xi, nrep = nrep)
+  p <- mapply(one_simulation, n = comb$n, xi = comb$xi)
   comb$s <- p["s", ]
   comb$k <- p["k", ]
   comb
 }
 
 #+ cache = TRUE
-res <- simulation_study(niter = 10, n = c(10, 50, 100, 200), xi = seq(1, 10, 2))
+res <- simulation_study(niter = 1000,
+                        n = c(10, 50, 100, 200),
+                        xi = seq(1, 10, 2))
 
 lattice::xyplot(s + k ~ xi | factor(n), data = res,
-                type = c("a", "p"),
+                type = "a",,
                 auto.key = list(space = "top", column = 2),
                 xlab = expression(xi),
-                ylab = "Power",
+                ylab = "Mean p value",
                 abline = list(h = c(0.05, 0.8), lty = 3))
 
 # What Wikipedia says on this:

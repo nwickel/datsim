@@ -1,7 +1,7 @@
 #' ---
 #' title: "Data simulation to examine test properties"
 #' author: ""
-#' date: "Last modified: 2025-09-10"
+#' date: "Last modified: 2025-09-12"
 #' bibliography: ../lit.bib
 #' ---
 
@@ -18,7 +18,6 @@ dgp <- function(npers, beta, normality){
     err <- rnorm(n = npers, mean = 0, sd = 1)
   } else {
     err <- fGarch::rsnorm(n = npers, mean = 0, sd = 1, xi = 5)
-    #err <- rchisq(n = npers, df = 1) |> scale()
   }
   y <- beta[1] + beta[2] * x + err
   dat <- data.frame(x = x, y = y)
@@ -50,9 +49,7 @@ simulation_study <- function(niter, npers, beta, normality){
 
 #+ cache = TRUE
 res <- simulation_study(niter = 1000,
-                        #npers = c(20, 50, 100),
                         npers = c(10, 20, 30),
-                        #npers = c(100, 500, 1000),
                         beta = c(1, 2.5),
                         normality = c(TRUE, FALSE))
 
@@ -88,8 +85,7 @@ one_simulation <- function(npers, beta, normality){
 
 # Complete simulation design
 simulation_study <- function(niter, npers, beta, normality){
-  prs <- expand.grid(i = 1:niter, npers = npers, 
-                     normality = normality)
+  prs <- expand.grid(i = 1:niter, npers = npers, normality = normality)
   bias <- rep(NA, nrow(prs))
   for(i in 1:nrow(prs)) {
     bias[i] <- one_simulation(npers = prs$npers[i],
@@ -137,8 +133,7 @@ one_simulation <- function(npers, beta, normality){
 #' ## Complete simulation design
 
 simulation_study <- function(niter, npers, beta, normality){
-  prs <- expand.grid(i = 1:niter, npers = npers, 
-                     normality = normality)
+  prs <- expand.grid(i = 1:niter, npers = npers, normality = normality)
   slope_est <- rep(NA, nrow(prs))
   covered <- rep(NA, nrow(prs))
   for(i in 1:nrow(prs)) {
@@ -179,8 +174,7 @@ one_simulation <- function(npers, beta, normality){
 }
 
 simulation_study <- function(niter, npers, beta, normality){
-  prs <- expand.grid(i = 1:niter, npers = npers, 
-                     normality = normality)
+  prs <- expand.grid(i = 1:niter, npers = npers, normality = normality)
   res <- rep(NA, nrow(prs))
   for(i in 1:nrow(prs)) {
     res[i] <- one_simulation(npers = prs$npers[i],
