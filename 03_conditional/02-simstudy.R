@@ -1,7 +1,7 @@
 #' ---
 #' title: "Data simulation to examine test properties"
 #' author: ""
-#' date: "Last modified: 2025-09-12"
+#' date: "Last modified: 2025-09-15"
 #' bibliography: ../lit.bib
 #' ---
 
@@ -36,8 +36,7 @@ one_simulation <- function(npers, beta, normality){
 #' ## Complete simulation design
 
 simulation_study <- function(niter, npers, beta, normality){
-  prs <- expand.grid(i = 1:niter, npers = npers, 
-                     normality = normality)
+  prs <- expand.grid(i = 1:niter, npers = npers, normality = normality)
   slope_est <- rep(NA, nrow(prs))
   for(i in 1:nrow(prs)) {
     slope_est[i] <- one_simulation(npers = prs$npers[i],

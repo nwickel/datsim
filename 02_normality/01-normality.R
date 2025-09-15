@@ -1,7 +1,7 @@
 #' ---
 #' title: "Data simulation to compare methods for testing normality assumption"
 #' author: ""
-#' date: "Last modified: 2025-09-13"
+#' date: "Last modified: 2025-09-15"
 #' bibliography: ../lit.bib
 #' ---
 
@@ -36,7 +36,7 @@ nortest::sf.test(ChickWeight$weight)      # Shapiro-Francia test for normality
 #' # Simulate skewed data
 #'
 # For the data generating process we take the funtion `fGarch::rsnorm()`. In
-# order to be change it easily, we still wrap it in `dgp()`.
+# order to change it easily, we still wrap it in `dgp()`.
 
 dgp <- function(n, xi) {
   fGarch::rsnorm(n = n, mean = 0, sd = 1, xi = xi)

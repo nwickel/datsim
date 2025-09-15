@@ -1,13 +1,8 @@
 #' ---
 #' title: "Data simulation in R"
 #' author: ""
-#' date: "Last modified: 2025-09-10"
+#' date: "Last modified: 2025-09-15"
 #' bibliography: ../lit.bib
-#' output:
-#'   html_document:
-#'     toc: true
-#'     toc_float: true
-#'     number_sections: true
 #' ---
 #'
 #' In this session, we will use R to simulate data sets. Simulating data can be
@@ -393,13 +388,19 @@ sim_results <- simulation_study(niter = 500,
 sim_results |> head()
 
 # Visualize results
-lattice::bwplot(slope_est ~ factor(npers) | factor(s_err),
-                data = sim_results,
-                xlab = "Sample size",
-                ylab = "Estimates",
-                strip = lattice::strip.custom(var.name = "Error SD",
-                                     sep = " = ", strip.names = TRUE),
-                abline = list(h = 2.5, lty = 2))
+library("lattice")
+
+bwplot(slope_est ~ factor(npers) | factor(s_err),
+       data = sim_results,
+       xlab = "Sample size",
+       ylab = "Estimates",
+       strip = lattice::strip.custom(var.name = "Error SD",
+                            sep = " = ", strip.names = TRUE),
+       panel = function(...){
+         panel.pwplot(...)
+         panel.abline(h = 2.5, lty = 2)
+       }
+)
 
 #' ## References {-}
 
