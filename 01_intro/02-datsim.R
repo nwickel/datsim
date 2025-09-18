@@ -397,7 +397,7 @@ bwplot(slope_est ~ factor(npers) | factor(s_err),
        strip = lattice::strip.custom(var.name = "Error SD",
                             sep = " = ", strip.names = TRUE),
        panel = function(...){
-         panel.pwplot(...)
+         panel.bwplot(...)
          panel.abline(h = 2.5, lty = 2)
        }
 )
